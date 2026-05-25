@@ -219,6 +219,193 @@ body { font-family: 'Inter',-apple-system,sans-serif !important; background: var
   .dashboard-sections > .dashboard-section:last-child { grid-column: 1 !important; grid-row: 1 !important; }
   .stats-grid { grid-template-columns: repeat(2,1fr) !important; }
 }
+
+/* ══════════════════════════════════════════════════
+   MOBILE CRM — Full App Redesign (≤768px)
+   ══════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+
+  /* ── 1. HIDE SIDEBAR, HAMBURGER ── */
+  .sidebar-nav      { display: none !important; }
+  .mobile-menu-btn  { display: none !important; }
+
+  /* ── 2. MAIN VIEWPORT — full width, bg ── */
+  .main-viewport {
+    margin-left: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    background: #f0f2f8 !important;
+    padding-bottom: 72px !important;
+  }
+
+  /* ── 3. STICKY HEADER ── */
+  .main-header {
+    position: sticky !important; top: 0 !important; z-index: 500 !important;
+    background: #fff !important;
+    border-bottom: 1px solid #e8ecf2 !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07) !important;
+    padding: 0 14px !important;
+    height: 56px !important; min-height: 56px !important;
+    display: flex !important; align-items: center !important;
+    justify-content: space-between !important; gap: 10px !important;
+  }
+  .header-left {
+    display: flex !important; align-items: center !important;
+    gap: 8px !important; flex: 1 !important; min-width: 0 !important;
+  }
+  .header-left h2 {
+    font-size: 16px !important; font-weight: 700 !important;
+    color: #0f172a !important; margin: 0 !important;
+    white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important;
+  }
+  .header-right {
+    display: flex !important; align-items: center !important;
+    gap: 8px !important; flex-shrink: 0 !important;
+  }
+  /* Hide extra header buttons — keep only avatar */
+  .header-right > *:not(:last-child) { display: none !important; }
+  .user-profile > div:first-child { display: none !important; }
+
+  /* ── 4. PAGE INNER PADDING ── */
+  .main-viewport > div,
+  .page-container { padding: 14px 12px !important; }
+
+  /* ── 5. SECTION HEADINGS ── */
+  h1.text-gradient { font-size: 22px !important; margin-bottom: 2px !important; }
+  .text-muted { font-size: 12px !important; margin-bottom: 12px !important; }
+
+  /* ── 6. FULL-WIDTH PRIMARY BUTTON ── */
+  .btn-primary { width: 100% !important; text-align: center !important; justify-content: center !important; font-size: 14px !important; padding: 13px !important; border-radius: 12px !important; }
+
+  /* ── 7. STAT CARDS — vertical stacking, no truncation ── */
+  .stats-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important; margin-bottom: 14px !important;
+  }
+  .glass-card.stat-card {
+    display: flex !important; flex-direction: column !important;
+    align-items: flex-start !important; justify-content: space-between !important;
+    padding: 14px 13px !important; border-radius: 16px !important;
+    min-height: 96px !important; overflow: hidden !important;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.07) !important;
+    gap: 8px !important;
+  }
+  .stat-icon-wrap {
+    width: 32px !important; height: 32px !important; font-size: 16px !important;
+    border-radius: 8px !important; display: flex !important;
+    align-items: center !important; justify-content: center !important; flex-shrink: 0 !important;
+  }
+  .stat-content { width: 100% !important; min-width: 0 !important; }
+  .stat-label {
+    font-size: 9.5px !important; font-weight: 700 !important; text-transform: uppercase !important;
+    letter-spacing: .5px !important; color: #94a3b8 !important;
+    white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important;
+    display: block !important; margin-bottom: 2px !important;
+  }
+  .stat-value, .glass-card.stat-card h2 {
+    font-size: 22px !important; font-weight: 800 !important; color: #0f172a !important;
+    line-height: 1.15 !important; margin: 0 !important; padding: 0 !important;
+    white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important;
+  }
+
+  /* ── 8. GLASS CARDS (general) ── */
+  .glass-card { border-radius: 16px !important; box-shadow: 0 1px 6px rgba(0,0,0,0.07) !important; }
+  .glass-card:not(.stat-card) { padding: 14px !important; }
+  .glass-card + .glass-card { margin-top: 12px !important; }
+
+  /* ── 9. DASHBOARD GRID — single column ── */
+  .dashboard-sections { grid-template-columns: 1fr !important; gap: 12px !important; }
+  .dashboard-sections > .dashboard-section:first-child {
+    grid-column: 1 !important; grid-row: 2 !important;
+    position: static !important; max-height: 360px !important; overflow-y: auto !important;
+  }
+  .dashboard-sections > .dashboard-section:last-child {
+    grid-column: 1 !important; grid-row: 1 !important;
+  }
+
+  /* ── 10. QUICK ACTIONS ── */
+  .quick-action-item, [class*="action-item"] { padding: 14px 12px !important; }
+
+  /* ── 11. ITIN LIST ROWS ── */
+  .itin-tab { padding: 12px 10px !important; }
+  .itin-tab-name { font-size: 13px !important; white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; max-width: 200px !important; }
+  .itin-tabs { max-height: 360px !important; overflow-y: auto !important; }
+
+  /* ── 12. LEADS STATS CHIPS ── */
+  .stats-row { grid-template-columns: repeat(4,1fr) !important; gap: 6px !important; margin-bottom: 14px !important; }
+  .stat-chip { padding: 10px 4px !important; border-radius: 10px !important; text-align: center !important; }
+  .stat-chip .stat-count { font-size: 17px !important; font-weight: 800 !important; display: block !important; }
+  .stat-chip .stat-label  { font-size: 8.5px !important; white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; display: block !important; }
+
+  /* ── 13. BOOKING STATS ── */
+  .booking-stats { gap: 8px !important; margin-bottom: 14px !important; }
+  .booking-stat {
+    display: flex !important; flex-direction: column !important;
+    align-items: flex-start !important; gap: 2px !important;
+    padding: 12px 10px !important; border-radius: 12px !important;
+  }
+  .booking-stat .stat-icon-wrap { display: none !important; }
+  .booking-stat .stat-label {
+    font-size: 8.5px !important; font-weight: 700 !important; text-transform: uppercase !important;
+    letter-spacing: .4px !important; color: #94a3b8 !important;
+    white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; width: 100% !important;
+  }
+  .booking-stat .stat-value {
+    font-size: 16px !important; font-weight: 800 !important;
+    white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; width: 100% !important;
+  }
+
+  /* ── 14. TABLES — horizontal scroll ── */
+  .table-wrap, .leads-list-wrap, .bookings-list-wrap { overflow-x: auto !important; -webkit-overflow-scrolling: touch !important; }
+  table { min-width: 460px !important; font-size: 12.5px !important; }
+  th, td { padding: 10px 10px !important; }
+
+  /* ── 15. SEARCH BAR ── */
+  input[type="text"], input[type="search"] { font-size: 14px !important; padding: 11px 14px !important; }
+
+  /* ── 16. FILTER CHIPS ── */
+  .filter-chips, .status-filters { flex-wrap: wrap !important; gap: 6px !important; margin-bottom: 14px !important; }
+  .filter-chip, .status-chip { font-size: 12px !important; padding: 6px 12px !important; border-radius: 20px !important; white-space: nowrap !important; }
+
+  /* ── 17. LEAD / BOOKING ROWS ── */
+  .lead-row, .booking-row { padding: 12px 10px !important; }
+  .lead-name, .booking-name { font-size: 13px !important; font-weight: 600 !important; }
+  .lead-meta, .booking-meta { font-size: 11.5px !important; }
+
+  /* ── 18. ITINERARY OVERLAY ── */
+  .itin-overlay-top { padding: 14px 16px !important; }
+  .itin-overlay-top h2 { font-size: 17px !important; }
+  .itin-overlay-body { padding: 12px !important; }
+  .itin-cards-grid { grid-template-columns: 1fr !important; gap: 10px !important; }
+  .itin-card { border-radius: 14px !important; }
+  .itin-card-body { padding: 12px !important; }
+  .itin-card-title { font-size: 14px !important; }
+
+  /* ── 19. BOTTOM NAV ── */
+  .mob-bottom-nav {
+    position: fixed !important; bottom: 0 !important; left: 0 !important; right: 0 !important;
+    height: 62px !important; background: #fff !important;
+    border-top: 1.5px solid #e8ecf2 !important;
+    box-shadow: 0 -4px 24px rgba(0,0,0,0.10) !important;
+    display: flex !important; align-items: stretch !important;
+    z-index: 9990 !important;
+    padding-bottom: env(safe-area-inset-bottom, 0px) !important;
+  }
+  .mob-nav-item {
+    flex: 1 !important; display: flex !important; flex-direction: column !important;
+    align-items: center !important; justify-content: center !important; gap: 3px !important;
+    cursor: pointer !important; text-decoration: none !important;
+    color: #b0bac9 !important; font-weight: 600 !important;
+    border: none !important; background: none !important; padding: 0 !important;
+    transition: color .15s !important; -webkit-tap-highlight-color: transparent !important;
+  }
+  .mob-nav-icon { font-size: 21px !important; line-height: 1 !important; display: block !important; }
+  .mob-nav-item span:last-child { font-size: 9px !important; letter-spacing: .2px !important; }
+  .mob-nav-item.active { color: #3b6ff5 !important; }
+  .mob-nav-item.active .mob-nav-icon { transform: scale(1.08) !important; }
+}
   </style>
   <body>
     <div id="root"></div>
@@ -385,12 +572,65 @@ body { font-family: 'Inter',-apple-system,sans-serif !important; background: var
       card.appendChild(list);
     }
 
+    /* ── BOTTOM NAV (mobile) ── */
+    var MOB_ROUTES = [
+      { label: 'Overview',  icon: '📊', href: '/crm' },
+      { label: 'Itinerary', icon: '🗓️', href: null },   // null = opens overlay
+      { label: 'Leads',     icon: '👥', href: '/crm/leads' },
+      { label: 'Bookings',  icon: '📅', href: '/crm/bookings' },
+      { label: 'Settings',  icon: '⚙️', href: '/crm/admin' }
+    ];
+
+    function buildBottomNav() {
+      if (window.innerWidth > 768) return;
+      if (document.querySelector('.mob-bottom-nav')) {
+        updateBottomNavActive(); return;
+      }
+      var nav = document.createElement('nav');
+      nav.className = 'mob-bottom-nav';
+      MOB_ROUTES.forEach(function(route) {
+        var btn = document.createElement('a');
+        btn.className = 'mob-nav-item';
+        btn.href = route.href || 'javascript:void(0)';
+        btn.innerHTML = '<span class="mob-nav-icon">' + route.icon + '</span><span>' + route.label + '</span>';
+        if (route.href === null) {
+          btn.addEventListener('click', function(e) { e.preventDefault(); openItinOverlay(); });
+        } else {
+          btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.history.pushState({}, '', route.href);
+            window.dispatchEvent(new PopStateEvent('popstate'));
+          });
+        }
+        nav.appendChild(btn);
+      });
+      document.body.appendChild(nav);
+      updateBottomNavActive();
+    }
+
+    function updateBottomNavActive() {
+      var nav = document.querySelector('.mob-bottom-nav');
+      if (!nav) return;
+      var path = window.location.pathname;
+      Array.from(nav.querySelectorAll('.mob-nav-item')).forEach(function(btn, i) {
+        var route = MOB_ROUTES[i];
+        var active = route.href && (
+          route.href === '/crm' ? path === '/crm' || path === '/crm/'
+                                : path.startsWith(route.href)
+        );
+        btn.classList.toggle('active', !!active);
+      });
+    }
+
+    window.addEventListener('popstate', function() { setTimeout(updateBottomNavActive, 100); });
+
     // Debounced rebuild on any DOM change
     var obs = new MutationObserver(function() {
       clearTimeout(timer);
       timer = setTimeout(function() {
         addItinNavItem();
         buildTabs();
+        buildBottomNav();
       }, 120);
     });
 
@@ -403,6 +643,7 @@ body { font-family: 'Inter',-apple-system,sans-serif !important; background: var
         setTimeout(function() {
           addItinNavItem();
           buildTabs();
+          buildBottomNav();
         }, ms);
       });
     }
