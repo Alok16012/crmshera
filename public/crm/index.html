@@ -22,6 +22,8 @@
   --transition: all .2s cubic-bezier(.4,0,.2,1); --sidebar-w: 240px;
 }
 body { font-family: 'Inter',-apple-system,sans-serif !important; background: var(--bg) !important; }
+*, *::before, *::after { box-sizing: border-box; }
+html, body { overflow-x: hidden !important; max-width: 100vw !important; }
 
 /* ── SIDEBAR NAV ── */
 .sidebar-nav { width: var(--sidebar-w) !important; background: #fff !important; border-right: 1px solid var(--border) !important; padding: 24px 16px !important; backdrop-filter: none !important; }
@@ -229,14 +231,22 @@ body { font-family: 'Inter',-apple-system,sans-serif !important; background: var
   .sidebar-nav      { display: none !important; }
   .mobile-menu-btn  { display: none !important; }
 
-  /* ── 2. MAIN VIEWPORT — full width, bg ── */
+  /* ── 2. LAYOUT — kill overflow, reset widths ── */
+  .layout-wrapper {
+    overflow-x: hidden !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    flex-direction: column !important;
+  }
   .main-viewport {
     margin-left: 0 !important;
-    padding: 0 !important;
+    padding: 0 0 72px !important;
     width: 100% !important;
+    max-width: 100vw !important;
     min-width: 0 !important;
+    flex: 1 !important;
+    overflow-x: hidden !important;
     background: #f0f2f8 !important;
-    padding-bottom: 72px !important;
   }
 
   /* ── 3. STICKY HEADER ── */
@@ -279,6 +289,8 @@ body { font-family: 'Inter',-apple-system,sans-serif !important; background: var
   .btn-primary { width: 100% !important; text-align: center !important; justify-content: center !important; font-size: 14px !important; padding: 13px !important; border-radius: 12px !important; }
 
   /* ── 7. STAT CARDS — vertical stacking, no truncation ── */
+  /* Override base .stat-card padding: 20px that fights layout */
+  .stat-card { padding: 14px 13px !important; }
   .stats-grid {
     display: grid !important;
     grid-template-columns: 1fr 1fr !important;
